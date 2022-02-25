@@ -4,7 +4,7 @@
 
 ## What are NFTs?
 
-NFTs (Non Fungible Tokens) are digital assets that represent real-world objects, like art, music, or videos. They are primarily stored on the Ethereum blockchain, and traded online using cryptocurrency. The most popular NFTs today are part of generative art collections, such as CryptoPunks, or Bored Ape Yacht Club. These NFT collections are incredibly successful because owning one of these NFTs gives you special access and a feeling of belonging to an exclusive community.
+NFTs (Non Fungible Tokens) are digital assets that represent real-world objects, like art, music, or videos. They are primarily stored on the Ethereum blockchain, and traded online using cryptocurrency. The most popular NFTs today are part of generative art collections, such as CryptoPunks, or Bored Ape Yacht Club. Such collections have been very successful in creating strong and vibrant communities, because owning one of these NFTs gives special access and a feeling of belonging to that exclusive community.
 
 These generative NFT collections consist of avatars with randomly generated features (such as hair color, face style, shirt color), with certain features being more common or rarer than others. So an NFT can be significantly rarer than another if it has multiple rare traits(e.g. unique hair color or accessories), while the other only has common traits.
 
