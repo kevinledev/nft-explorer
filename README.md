@@ -28,7 +28,7 @@ NFT Explorer gives NFT investors/collectors a tool to simplify their NFT search 
   <li> Javascript to calculate rarity and handle sorting logic </li>
   <li> Moralis API to pull blockchain data </li>
   <li> CSS for styling </li>
-</ul> <br>
+</ul> 
 
 ## Implementation Timeline
 Note to self: complete by end of day
