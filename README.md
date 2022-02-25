@@ -10,7 +10,7 @@ These generative NFT collections consist of avatars with randomly generated feat
 
 For an investor looking to buy into an NFT project, they will go through all NFTs in a collection to find ones that they like in terms of look and overall rarity. Rarity is most important to an investor because rarer NFTs have more potential to increase in value over time. When dealing with highly speculative assets like these jpeg images, it's important to make sure your investment keeps its value.
 
-NFT Explorer gives investors and collectors a compass to navigate the wild-west of NFTs. Users can narrow their focus to the rarest NFTs in a collection, and make the most informed decision when buying into an NFT project. <br><br>
+*NFT Explorer* gives investors and collectors a compass to navigate the wild-west of NFTs. Users can narrow their focus to the rarest NFTs in a collection, and make the most informed decision when buying into an NFT project. <br><br>
 
 
 ## In NFT Explorer, users will be able to: 
