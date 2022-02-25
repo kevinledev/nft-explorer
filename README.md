@@ -22,14 +22,16 @@ NFT Explorer gives NFT investors/collectors a tool to simplify their NFT search 
   <li> Sort NFT collection by token id number </li>
 </ul>
 
-### In addition, this project will include:
+
+## Technologies
 <ul>
-  <li>  </li>
-  <li>  </li>
+  <li> Javascript to calculate rarity and handle sorting logic </li>
+  <li> Moralis API to pull blockchain data </li>
+  <li> CSS for styling </li>
 </ul> <br>
 
 ## Implementation Timeline
-I will try to complete by end of day
+Note to self: complete by end of day
 <ul>
   <li>Friday: Write a javascript program that uses an API to pull nft data from the blockchain. The program will organize the data. Start researching how rarity scores are calculated. Decide if I should use a database or not, and if so, which database.</l1>
 
