@@ -41,6 +41,17 @@ async function generateRarity(){
     } else {
       tally.TraitCount[numOfTraits] = 1;
     }
+
+    // create new keys in the 'tally' object for trait_type 
+    // count each time that trait occurs
+    for (let i = 0; i < nftTraits.length; i++) {
+      let current = nftTraits[i];
+      if (tally[current]) {
+        tally[current].count++;
+      } else {
+        tally[current] = {count: 1}
+      }
+    }
   }
   
   console.log(tally)
