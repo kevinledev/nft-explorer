@@ -1,5 +1,6 @@
 <h1 align="center">NFT Explorer</h1>
-NFT Explorer is a web app that analyzes NFT collections and generates rarity scores for users to sort and view NFTs by rarity. It will do so by pulling NFT data from the blockchain, rendering the NFT images/data, and assigning a rarity score for each NFT representing how rare an NFT is. <br><br>
+
+*NFT Explorer* is a web app that analyzes NFT collections and generates rarity scores for users to sort and view NFTs by rarity. It will do so by pulling NFT data from the blockchain, rendering the NFT images/data, and assigning a rarity score for each NFT representing how rare an NFT is. <br><br>
 
 ## What are NFTs?
 
@@ -16,14 +17,15 @@ NFT Explorer gives NFT investors/collectors a tool to simplify their NFT search 
 <ul>
   <li> View complete NFT collections, including images and NFT traits.</li>
   <li> See overall NFT rarity depending on a combination of its traits.</li>
-  <li> Sort NFT collection by rarity, or sort by token id number. </li>
   <li> Input a contract address to view any NFT collection. </li>
+  <li> Sort NFT collection by rarity </li>
+  <li> Sort NFT collection by token id number </li>
 </ul>
 
 ### In addition, this project will include:
 <ul>
-  <li> a generateRarity.js file that calculates the rarity scores for an NFT collection</li>
-  <li> Cascasing Style Sheets (CSS) file </li>
+  <li>  </li>
+  <li>  </li>
 </ul> <br>
 
 ## Implementation Timeline
