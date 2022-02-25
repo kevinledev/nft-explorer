@@ -33,7 +33,7 @@ NFT Explorer gives NFT investors/collectors a tool to simplify their NFT search 
 ## Implementation Timeline
 Note to self: complete by end of day
 <ul>
-  <li>Friday: Write a javascript program that uses an API to pull nft data from the blockchain. The program will organize the data. Start researching how rarity scores are calculated. Decide if I should use a database or not, and if so, which database.</l1>
+  <li>Friday: Write a javascript program that uses an API to pull nft data from the blockchain. Finalize rarity score formula and server.</l1>
 
   <li>Sunday: Research and design the scoring algorithm for NFTs. If there is time, create a front end that can render a single set of NFTs.</l1>
 
