@@ -8,9 +8,9 @@ NFTs (Non Fungible Tokens) are digital assets that represent real-world objects,
 
 These generative NFT collections consist of avatars with randomly generated features (such as hair color, face style, shirt color), with certain features being more common or rarer than others. So an NFT can be significantly rarer than another if it has multiple rare traits(e.g. unique hair color or accessories), while the other only has common traits.
 
-For an investor looking to buy into an NFT project, they will go through all NFTs in a collection to find ones that they like in terms of look and overall rarity. Rarity is most important to an investor because rarer NFTs have more potential to increase in value over time. It's important to make sure you are spending the right amount for an NFT. No one wants to buy a common NFT at high prices!
+For an investor looking to buy into an NFT project, they will go through all NFTs in a collection to find ones that they like in terms of look and overall rarity. Rarity is most important to an investor because rarer NFTs have more potential to increase in value over time. However, it's almost impossible to tell how rare an NFT is just by looking at it.
 
-*NFT Explorer* gives investors and collectors a compass to navigate the wild-west of NFTs. Users can narrow their focus to the rarest NFTs in a collection, and make the most informed decision when buying into an NFT project. <br><br>
+*NFT Explorer* gives investors and collectors a compass to navigate the wild-west of NFTs. Users can narrow their focus to the rarest NFTs in a collection, and make the most informed buying decision into NFT projects. <br><br>
 
 
 ## In NFT Explorer, users will be able to: 
