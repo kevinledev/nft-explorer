@@ -26,13 +26,13 @@ async function generateRarity(){
 
   // each NFT(or token) pulled from the API contains a "metadata" object, which contains the "attributes"(aka NFT traits)
   // lists each NFT's attributes(object with keys 'trait_type' and 'value') from the metadata
-  let attributes = allNFTs.map((nft) => JSON.parse(nft.metadata).attributes);
+  let metadata = allNFTs.map((nft) => JSON.parse(nft.metadata).attributes);
 
   let tally = {"TraitCount":{}};
 
-  for (let j = 0; j < attributes.length; j++) {
-    nftTraits = attributes[j].map((nft) => nft.trait_type);
-    nftValues = attributes[j].map((nft) => nft.value);
+  for (let i = 0; i < metadata.length; i++) {
+    nftTraits = metadata[i].map((nft) => nft.trait_type);
+    nftValues = metadata[i].map((nft) => nft.value);
 
     let numOfTraits = nftTraits.length; // an NFT can have varying # traits
 
@@ -42,19 +42,57 @@ async function generateRarity(){
       tally.TraitCount[numOfTraits] = 1;
     }
 
-    // create new keys in the 'tally' object for trait_type 
-    // count each time that trait occurs
-    for (let i = 0; i < nftTraits.length; i++) {
-      let current = nftTraits[i];
-      if (tally[current]) {
-        tally[current].count++;
+    // iterate through the NFTs to count the traits and values
+    for (let j = 0; j < nftTraits.length; j++) {
+      // create new keys in the 'tally' object for trait_type 
+      // count each time that trait occurs
+      let currentTrait = nftTraits[j];
+      if (tally[currentTrait]) {
+        tally[currentTrait].occurences += 1;
       } else {
-        tally[current] = {count: 1}
+        tally[currentTrait] = { occurences: 1 };
+      }
+
+      // create new keys in the 'tally' object for value 
+      // count each time that trait value occurs
+      let currentValue = nftValues[j];
+      if (tally[currentTrait][currentValue]) {
+        tally[currentTrait][currentValue] += 1;
+      } else {
+        tally[currentTrait][currentValue] = 1;
       }
     }
   }
+  // console.log(metadata[0][0].trait_type)
+  console.log()
   
-  console.log(tally)
+
+  // iterate through the metadata, and calculate a rarity score for each trait value
+  // an NFT would have rarityScore X if it contains trait value Y
+  for (let i = 0; i < metadata.length; i++) {
+    let current = metadata[i];    // the metadata of nft i
+    let totalRarity = 0;
+    
+    // iterating through the trait types (e.g. body, shirt, face ,tier, hat)
+    for (let j = 0; j < current.length; j++) { 
+  
+      // key into the tally to find the number of times a specific trait occurs in the collection
+      let numTraitOccurences = tally[current[j].trait_type][current[j].value]
+      let rarityScore = 1 / (numTraitOccurences / totalNum);  // rarity score = 1 / trait rarity
+      current[j].rarityScore = rarityScore;
+    }
+
+    // calculate the rarity score from having certain # of traits
+    // pushes on to the metadata the rarity score for having X number of traits
+    let rarityScoreNumTraits = 1 / (tally.TraitCount[Object.keys(current).length] / totalNum);
+    current.push({
+      trait_type: "TraitCount",
+      value: Object.keys(current).length,
+      rarityScore: rarityScoreNumTraits,
+    });
+  }
+  console.log(metadata[0])
+  
 };
 
 generateRarity();
