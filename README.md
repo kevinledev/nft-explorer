@@ -16,7 +16,7 @@ For an investor looking to buy into an NFT project, they will go through all NFT
 ## In NFT Explorer, users will be able to: 
 <ul>
   <li> View complete NFT collections, including images and NFT traits.</li>
-  <li> See overall NFT rarity depending on a combination of its traits.</li>
+  <li> Click on a specific NFT to see its rarity and trait information.</li>
   <li> Input a contract address to view any NFT collection. </li>
   <li> Sort NFT collection by rarity </li>
   <li> Sort NFT collection by token id number </li>
