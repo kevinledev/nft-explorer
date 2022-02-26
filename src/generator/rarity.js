@@ -1,9 +1,15 @@
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 const Moralis = require('moralis/node');
 require('dotenv').config({ path: '/Users/kevinle/Projects/nft-explorer/.env'});
-
 const serverUrl = process.env.SERVER_URL;
 const appId = process.env.APP_ID;
 Moralis.start({ serverUrl, appId });
+
+const collectionAddress = "0x1A92f7381B9F03921564a437210bB9396471050C"
+const collectionName = "CoolCats"
+// const collectionAddress = "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB"
+// const collectionName = "CryptoPunks"
+
 
 //function used to change the image link to gateway.ipfs
 const modifyImgLink = (url) => {
@@ -11,36 +17,55 @@ const modifyImgLink = (url) => {
   return url.replace("ipfs://", "https://gateway.ipfs.io/ipfs/");
 };
 
-// const collectionAddress = "0x1A92f7381B9F03921564a437210bB9396471050C"
-// const collectionName = "Cool Cats"
-const collectionAddress = "0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D"
-const collectionName = "BAYC"
-
 async function generateRarity(){
   // returns an object with keys: total, page, page_size, cursor, result; the NFTs are stored in the "result"
   // we are concerned with the "metadata" object in the results, which contains the "attributes"
-  const NFTs = await Moralis.Web3API.token.getAllTokenIds({ address: collectionAddress })
+  const NFTs = await Moralis.Web3API.token.getAllTokenIds({ address: collectionAddress, offset: 3258})
 
   const totalNum = NFTs.total;         // total amount of NFTs in the collection
   const pageSize = NFTs.page_size;     // amount of NFTs pulled from the Moralis .getAllTokenIds
   let allNFTs = NFTs.result;           // all tokens(NFTs) listed in an object
+  console.log(totalNum);
 
-  // const timer = ms => new Promise(res => setTimeout(res, ms))
-  // for (let i = pageSize; i < totalNum; i += pageSize) {
-  //   const NFTs = const NFTs = await Moralis.Web3API.token.getAllTokenIds({ address: collectionAddress, offset: i });
-  //   allNFTs = allNFTs.concat(NFTs.result);
-  //   await timer(6000);
-  // }
+
+  const timer = (ms) => new Promise((res) => setTimeout(res, ms));
+
+  console.log('looping')
+  for (let i = pageSize; i < totalNum; i = i + pageSize) {
+    console.log(`index i: ${i}`)
+    const NFTs = await Moralis.Web3API.token.getAllTokenIds({
+      address: collectionAddress,
+      offset: i,
+    });
+    allNFTs = allNFTs.concat(NFTs.result);
+    await timer(5100);
+  }
+
+
+  for (let i = allNFTs.length - 1 ; i >= 0; i--){
+    if (!allNFTs[i].metadata || !allNFTs[i] ) {
+      allNFTs.splice(i, 1);
+    }
+  }
+  
 
   // each NFT(or token) pulled from the API contains a "metadata" object, which contains the "attributes"(aka NFT traits)
   // lists each NFT's attributes(object with keys 'trait_type' and 'value') from the metadata
-  let metadata = allNFTs.map((nft) => JSON.parse(nft.metadata).attributes);
+  let metadata = allNFTs.map((e) => JSON.parse(e.metadata).attributes);
+
+  for (let i = metadata.length - 1; i >= 0; i--) {
+    if (!metadata[i] || !metadata[i]) {
+      metadata.splice(i, 1);
+    }
+  }
 
   let tally = {"TraitCount":{}};
 
   for (let i = 0; i < metadata.length; i++) {
-    nftTraits = metadata[i].map((nft) => nft.trait_type);
-    nftValues = metadata[i].map((nft) => nft.value);
+
+    let nftTraits = metadata[i].map((nft) => nft.trait_type);
+    let nftValues = metadata[i].map((nft) => nft.value);
+
 
     let numOfTraits = nftTraits.length; // an NFT can have varying # traits
 
@@ -121,7 +146,18 @@ async function generateRarity(){
     if (allNFTs[i].metadata) {
       allNFTs[i].metadata = JSON.parse(allNFTs[i].metadata);
       allNFTs[i].image = modifyImgLink(allNFTs[i].metadata.image);
+    } else if (allNFTs[i].token_uri) {
+      try {
+        await fetch(allNFTs[i].token_uri)
+          .then((response) => response.json())
+          .then((data) => {
+            allNFTs[i].image = modifyImgLink(data.image);
+          });
+      } catch (error) {
+        console.log(error);
+      }
     }
+
 
     nftArr.push({ 
       Attributes: current, 
@@ -149,9 +185,7 @@ async function generateRarity(){
     await newObject.save();
     console.log(i);
   }
-  
-  return true
-
+  return true;
 };
 
 generateRarity();
