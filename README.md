@@ -22,6 +22,12 @@ For an investor looking to buy into an NFT project, they will go through all NFT
   <li> Sort NFT collection by token id number </li>
 </ul>
 
+## Wireframe
+<p align="center">
+  ![Screen Shot 2022-02-25 at 5 21 59 PM](https://user-images.githubusercontent.com/96442866/155823441-6b331991-d556-49ff-8e45-dd89e242124f.png)
+ <p>
+
+
 
 ## Technologies
 <ul>
