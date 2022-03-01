@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <style type="text/css"></style>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./src/styles/style.css">
   <title>NFT Explorer</title>
     <script type="module" src="./main.js"></script>
@@ -13,42 +15,45 @@
     <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
 </head>
 
-<body>
-  <header>
+<body class="container">
+  <header class="header">
     <nav class="nav-bar">
 
       <a href="/">
-        <img class="logo" src="./assets/logo.png" alt="imgname" height="40">
+        <img class="logo" src="./assets/round-logo-cropped.png" alt="imgname" height="36">
       </a>
 
-      <h2 class="darkmode">
-        dark mode
-      </h2>
 
-      
+        <form class="dropdown-menu" name="collection">
+          <select id="dropdown" class="dropdown">
+            <option value="" disabled selected>Select Collection</option>
+            <option value="Doodles">Doodles</option>
+            <option value="BoredApeKennelClub" name="Bored Ape Kennel Club">Bored Ape Kennel Club</option>
+          </select>
+        </form>
 
-
-
+        <div class="links" style="margin-right:20px">
+          add links here
+        </div>
     </nav>
+
   </header>
 
-  <form action="#">
-    <label for="collection"></label>
-    <select name="languages" id="lang">
-      <option value="" disabled selected>Select your option</option>
-      <option value="javascript">JavaScript</option>
-      <option value="php">PHP</option>
-      <option value="java">Java</option>
-      <option value="golang">Golang</option>
-      <option value="python">Python</option>
-      <option value="c#">C#</option>
-      <option value="C++">C++</option>
-      <option value="erlang">Erlang</option>
-    </select>
-    <input type="submit" value="Submit" />
-  </form>
+  <div id="collection-name"></div>
 
+  <div class="modal">
+    modal
+  </div>
+  
+  <div id="gallery"></div>
 
+  <div class="load-more">
+    <button id="load-button">Load More</button>
+  </div>
+
+  <footer>
+
+  </footer>
 
 </body>
 

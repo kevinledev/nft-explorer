@@ -1,0 +1,61 @@
+<body>
+
+  <header> filled out with nav bar</header>
+
+  <div class="collectionTitle">
+    name of collection goes here after selected
+  </div>
+
+
+  <div id="nft-modal" class="modal" 
+  style = " position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(1.1);">
+    <span onclick="document.getElementById('nft-modal').style.display='none'" class="display-modal">
+    </span>
+    <div class="modal-content">
+      <img>image goes here </img>
+
+      <div class="nft-stats">
+        collecitionName # token_id 
+        nft's Rank
+
+        <div class="rarity-total">
+          Rarity %: total rarity percentage
+        </div>
+
+        <div class="trait-stats">
+          
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="Gallery">
+
+    <div class="card">
+      <img src="pull_from_db" style="width:100%">
+      <div class="card-text">
+        nft Rank goes here
+        nft token id goes here
+      </div>
+
+      <span 
+        onclick="document.getElementById('nft-modal').style.display='block'"
+        class="display-modal">
+      </span>
+      make this transparent and cover entire container (card)
+    </div>
+
+  </div>
+
+</body>
