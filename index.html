@@ -10,7 +10,7 @@
     />
     <link rel="stylesheet" href="./src/styles/style.css" />
     <title>NFT Explorer</title>
-    <script type="module" src="./main.js"></script>
+    <script type="module" src="./dist/main.js"></script>
 
     <!-- Moralis SDK code -->
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
@@ -37,19 +37,27 @@
             <option value="Doodles">Doodles</option>
             <option value="BonsaiByZENFT">Bonsai by ZENFT</option>
             <option value="BoredApeKennelClub">Bored Ape Kennel Club</option>
-            <option value="InvisibleFriends">Invisible Friends</option>
-            <!-- <option value="AlienFrens">Alien Frens</option> -->
+            <option value="PhantaBear">PhantaBear</option>
+            <option value="SushiVerse">SushiVerse</option>
           </select>
         </form>
 
-        <div class="links" style="margin-right: 20px">add links here</div>
+        <div class="links" style="margin-right: 20px">add stuff here</div>
       </nav>
     </header>
 
     <div class="collection-wrapper">
-      <div id="collection-name"></div>
       <div id="sort-order">NFTs Ranked by Rarity</div>
+      <div id="collection-name"></div>
     </div>
+
+    <!-- <div class="asc-desc-wrapper">
+      <div class="asc-desc-button">
+        <button id="asc-desc">
+          Order: ascending
+        </button>
+      </div>
+    </div> -->
 
     <div class="modal">
       <div class="modal-box">

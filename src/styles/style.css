@@ -64,58 +64,185 @@ body {
   /* justify-content: center; */
   align-items: center;
   padding: 30px;
+  gap: 8px;
 }
 
 #collection-name {
   /* font-size: 36px; */
-  color: #007bfe;
+  color: white;
   font-weight: 700;
 }
 
 #sort-order {
-  color: #007bfe;
+  color: white;
   font-weight: 700;
   /* display:none; */
 }
 
 .modal {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  color: rgba(0, 0, 0, 0.85);
-  font-size: 14px;
-  font-variant: tabular-nums;
-  line-height: 1.5715;
-  list-style: none;
-  font-feature-settings: "tnum", "tnum";
-  pointer-events: none;
-  position: relative;
-  top: 100px;
-  width: auto;
-  max-width: calc(100vw - 32px);
-  margin: 0 auto;
-  padding-bottom: 24px;
+  z-index: 1;
+  position: fixed;
+  background-color: rgb(0, 0, 0 , 0.8);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  justify-content: center;
 }
 
 .modal-box {
-      overflow: auto;
-    border-radius: 1rem;
-        position: relative;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 0;
-    border-radius: 2px;
-    box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%), 0 9px 28px 8px rgb(0 0 0 / 5%);
-    pointer-events: auto;
+  display: flex;
+  flex-direction: horizontal;
+  justify-content: center; 
+  margin-top: 80px;
+  width: 800px;
+  height: 800px;
+  /* width: 80%; */
+  background-color: white;
+  border-radius: 3%;
 }
 
 .modal-body {
-      display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 30px;
-    width: 100%;
-    box-sizing: border-box;
+  border-radius: 10px;
+  display: flex;
+  justify-content: between;
+  align-items: center;
+  /* margin-bottom: 30px; */
+  height: 100%;
+  width: 800px;
+  background-color: rgb(32, 34, 37);
 }
+
+.modal-body-left {
+  display: flex;
+  flex-flow: column;
+  width: 55%;
+  align-items: center;
+  /* justify-content: center; */
+  margin-left: 20px;
+  gap: 18px;
+}
+
+.rank,.collection-and-id {
+  color: #dbdde0;
+  display: flex-wrap;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 30px;
+  text-align: center;
+  gap: 10px;
+}
+
+.rank {
+  color:#007bfe;
+  font-weight: 700;
+}
+
+.modal-body img {
+  display:block;
+  border-radius: 3%;
+  width: 432px;
+  height: 432px;
+  /* border: 2px solid white; */
+}
+
+.modal-body-right {
+  display:flex;
+  flex-flow: column;
+  align-items: center;
+  width: 45%;
+  color: black;
+  gap: 4px;
+}
+
+.rarity-score-wrapper {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 22px;
+  background-color:#007bfe;;
+  border-radius: 6px;
+  width: 90%;
+  height: 70;
+  margin-bottom: 8px;
+  justify-content: space between;
+}
+
+.rarity-score-label {
+  margin-top: 4px;
+  margin-bottom: 3px;
+}
+
+.rarity-score {
+  display:flex;
+  flex-flow: column;
+  align-items: center;
+  font-size: 28px;
+  font-weight: 700;
+  background-color:rgb(32, 34, 37);
+  color: white;
+  border-radius: 5px;
+  width: 90%;
+  height: 32px;
+}
+
+.trait-and-score{
+  font-size: 18px;
+  background-color: rgb(32, 34, 37);
+  width: 80%;
+  height: 22px;
+  display:flex;
+  flex-direction: horizontal;
+  align-items: center;
+  color: white;
+  /* border: 1px solid white; */
+}
+
+.trait-and-score {
+  color: #dbdde0;
+  display:flex;
+  flex-direction: horizontal;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.trait-score {
+  font-weight: 700;
+  color: white;
+  top: 2px;
+}
+
+.value-and-count {
+  width: 80%;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #8a939b;
+  border-radius: 4px;
+  height: 24px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  
+}
+
+.trait-value {
+  margin-left: 5px;
+  font-size:medium;
+}
+
+.trait-count {
+  background: white;
+  width: 64;
+  height: 100%;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
 
 #gallery {
   display: flex;
@@ -198,7 +325,7 @@ body {
 
 .card:hover {
   cursor: pointer;
-  box-shadow: 0px 2px 2px 0px white;
+  box-shadow: 0px 2px 2px 0px #dbdde0;
   transform: translateY(-5px) scale(1.005) translateZ(0);
 }
 
@@ -245,7 +372,7 @@ body {
 }
 
 .card-body-detail {
-  color: #8a939b;
+  color: #dbdde0;
   font-weight: 600;
 }
 

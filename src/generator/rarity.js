@@ -1,9 +1,12 @@
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
-const Moralis = require('moralis/node');
-require('dotenv').config({ path: '/Users/kevinle/Projects/nft-explorer/.env'});
+// const Moralis = require('moralis/node');
+import Moralis from 'moralis/node.js';
+import 'dotenv/config'
 
-const serverUrl = "REDACTED";
-const appId = "REDACTED";
+console.log(process.env)
+
+const serverUrl = process.env.SERVER_URL;
+const appId = process.env.APPLICATION_ID;
 Moralis.start({ serverUrl, appId });
 
 // Done pulling data from these projects:
@@ -15,8 +18,12 @@ Moralis.start({ serverUrl, appId });
 // const collectionName = "Doodles"
 // const contractAddress = "0xeC9C519D49856Fd2f8133A0741B4dbE002cE211b"
 // const collectionName = "BonsaiByZENFT"
-const contractAddress = "0xba30E5F9Bb24caa003E9f2f0497Ad287FDF95623"
-const collectionName = "BoredApeKennelClub"
+// const contractAddress = "0xba30E5F9Bb24caa003E9f2f0497Ad287FDF95623"
+// const collectionName = "BoredApeKennelClub"
+// const contractAddress = "0x67D9417C9C3c250f61A83C7e8658daC487B56B09";
+// const collectionName = "PhantaBear";
+const contractAddress = "0x06aF447c72E18891FB65450f41134C00Cf7Ac28c";
+const collectionName = "SushiVerse";
 
 
 // Still grab these projects
