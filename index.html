@@ -1,60 +1,70 @@
 <html>
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <style type="text/css"></style>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./src/styles/style.css">
-  <title>NFT Explorer</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <style type="text/css"></style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/styles/style.css" />
+    <title>NFT Explorer</title>
     <script type="module" src="./main.js"></script>
-  
-  <!-- Moralis SDK code -->
+
+    <!-- Moralis SDK code -->
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
-</head>
+  </head>
 
-<body class="container">
-  <header class="header">
-    <nav class="nav-bar">
-
-      <a href="/">
-        <img class="logo" src="./assets/round-logo-cropped.png" alt="imgname" height="36">
-      </a>
-
+  <body class="container">
+    <header class="header">
+      <nav class="nav-bar">
+        <a href="/">
+          <img
+            class="logo"
+            src="./assets/logo-white.png"
+            alt="imgname"
+            height="36px"
+          />
+        </a>
 
         <form class="dropdown-menu" name="collection">
           <select id="dropdown" class="dropdown">
             <option value="" disabled selected>Select Collection</option>
+            <option value="CoolCats">Cool Cats</option>
+            <option value="Robotos">Robotos</option>
             <option value="Doodles">Doodles</option>
-            <option value="BoredApeKennelClub" name="Bored Ape Kennel Club">Bored Ape Kennel Club</option>
+            <option value="BonsaiByZENFT">Bonsai by ZENFT</option>
+            <option value="BoredApeKennelClub">Bored Ape Kennel Club</option>
+            <option value="InvisibleFriends">Invisible Friends</option>
+            <!-- <option value="AlienFrens">Alien Frens</option> -->
           </select>
         </form>
 
-        <div class="links" style="margin-right:20px">
-          add links here
+        <div class="links" style="margin-right: 20px">add links here</div>
+      </nav>
+    </header>
+
+    <div class="collection-wrapper">
+      <div id="collection-name"></div>
+      <div id="sort-order">NFTs Ranked by Rarity</div>
+    </div>
+
+    <div class="modal">
+      <div class="modal-box">
+        <div class="modal-body">
+
         </div>
-    </nav>
+      </div>
+    </div>
 
-  </header>
+    <div id="gallery"></div>
 
-  <div id="collection-name"></div>
+    <!-- <div class="load-more">
+      <button id="load-button">Load More</button>
+    </div> -->
 
-  <div class="modal">
-    modal
-  </div>
-  
-  <div id="gallery"></div>
-
-  <div class="load-more">
-    <button id="load-button">Load More</button>
-  </div>
-
-  <footer>
-
-  </footer>
-
-</body>
-
+    <footer></footer>
+  </body>
 </html>
