@@ -103,8 +103,6 @@ async function fetchAndRenderCollection(collection, sortedBy, currentAmtCards) {
   }
   let titleText = document.querySelector("#collection-name");
   document.querySelector("#sort-order").classList.add(sortedBy);
-
-  // add event listeners for new the cards rendered
   titleText.innerText = insertSpacesAndCapitalize(collection);
 }
 
@@ -136,7 +134,7 @@ async function fetchAndRenderTokenDetails(collection, selectedTokenId) {
   let collAndId = document.createElement("div");
   collAndId.classList.add("collection-and-id");
   modalBodyLeft.appendChild(collAndId);
-  collAndId.innerText = `${collection} #${selectedTokenId}`;
+  collAndId.innerText = `${insertSpacesAndCapitalize(collection)} #${selectedTokenId}`;
 
   let modalBodyRight = document.createElement("div");
   modalBodyRight.classList.add("modal-body-right");
@@ -198,9 +196,7 @@ async function fetchAndRenderTokenDetails(collection, selectedTokenId) {
 }
 
 function loadMore() {
-  // const lastCard = document.querySelector(".card:last-of-type");
-  // let amountCardsLoaded = JSON.parse(lastCard.id) + 1;
-  // console.log(amountCardsLoaded + "cards loaded. Now loading more");
+
   let collection = document.getElementById("gallery").className;
   let amountCardsLoaded = document.querySelectorAll(".card").length;
   let sortOrder = document.querySelector("#sort-order").className;

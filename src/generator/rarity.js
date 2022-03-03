@@ -1,13 +1,18 @@
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
-// const Moralis = require('moralis/node');
-import Moralis from 'moralis/node.js';
-import 'dotenv/config'
+const Moralis = require('moralis/node');
+// import Moralis from 'moralis/node.js';
+// import 'dotenv/config'
 
-console.log(process.env)
 
-const serverUrl = process.env.SERVER_URL;
-const appId = process.env.APPLICATION_ID;
-Moralis.start({ serverUrl, appId });
+// const serverUrl = process.env.SERVER_URL;
+// const appId = process.env.APPLICATION_ID;
+// Moralis.start({ serverUrl, appId });
+
+  const serverUrl = "https://zp5obq00poae.usemoralis.com:2053/server";
+  const appId = "Vsfufr7b58Pbk14V5ZdAe412PCZp30ZktiHlPQdI";
+  Moralis.start({ serverUrl, appId });
+
+
 
 // Done pulling data from these projects:
 // const contractAddress = "0x1A92f7381B9F03921564a437210bB9396471050C"
@@ -22,21 +27,17 @@ Moralis.start({ serverUrl, appId });
 // const collectionName = "BoredApeKennelClub"
 // const contractAddress = "0x67D9417C9C3c250f61A83C7e8658daC487B56B09";
 // const collectionName = "PhantaBear";
-const contractAddress = "0x06aF447c72E18891FB65450f41134C00Cf7Ac28c";
-const collectionName = "SushiVerse";
+// const contractAddress = "0x06aF447c72E18891FB65450f41134C00Cf7Ac28c";
+// const collectionName = "test";
+// const contractAddress = "0x3a5051566b2241285BE871f650C445A88A970edd";
+// const collectionName = "TheHumanoids";
 
-
-// Still grab these projects
-// const contractAddress = "0x59468516a8259058baD1cA5F8f4BFF190d30E066"
-// const collectionName = "InvisibleFriends"
-// const contractAddress = "0x57a204AA1042f6E66DD7730813f4024114d74f37"
-// const collectionName = "CyberKongz"
+const contractAddress = "0x69B9C98e8D715C25B330d0D4eB07e68CbB7F6CFC";
+const collectionName = "Starcatchers";
 
 
 
 
-// turn "https://gateway.pinata.cloud/ipfs/Qmen2mzFwV63VEpPD9jvgmqFio7q4wpqqeP2qhR61LCgRr"
-// into "https://robotos.mypinata.cloud/ipfs/Qmen2mzFwV63VEpPD9jvgmqFio7q4wpqqeP2qhR61LCgRr"
 
 // function used to change the image link to gateway.ipfs
 const modifyImgLink = (url) => {
@@ -45,6 +46,8 @@ const modifyImgLink = (url) => {
 };
 
 
+// turn "https://gateway.pinata.cloud/ipfs/Qmen2mzFwV63VEpPD9jvgmqFio7q4wpqqeP2qhR61LCgRr"
+// into "https://robotos.mypinata.cloud/ipfs/Qmen2mzFwV63VEpPD9jvgmqFio7q4wpqqeP2qhR61LCgRr"
 // const modifyImgLink = (url) => {
 //   if (!url) return url;
 //   return url.replace("gateway.pinata", "robotos.mypinata");
@@ -63,21 +66,21 @@ async function generateRarity(){
 
   // Moralis queries only allow 500 objects at a time. Set a timer to query every 5100ms
 
-  const timer = (ms) => new Promise((res) => setTimeout(res, ms));
-  console.log(`Querying Moralis for ${collectionName}.`)
-  for (let i = pageSize; i < totalNum; i = i + pageSize) {
-    console.log(`Pulling from Moralis: ${i} NFTs pulled`)
-    const NFTs = await Moralis.Web3API.token.getAllTokenIds({
-      address: contractAddress,
-      offset: i,
-    });
-    allNFTs = allNFTs.concat(NFTs.result);
-    await timer(5100);
-  }
+  // const timer = (ms) => new Promise((res) => setTimeout(res, ms));
+  // console.log(`Querying Moralis for ${collectionName}.`)
+  // for (let i = pageSize; i < totalNum; i = i + pageSize) {
+  //   console.log(`Pulling from Moralis: ${i} NFTs pulled`)
+  //   const NFTs = await Moralis.Web3API.token.getAllTokenIds({
+  //     address: contractAddress,
+  //     offset: i,
+  //   });
+  //   allNFTs = allNFTs.concat(NFTs.result);
+  //   await timer(5100);
+  // }
 
 
   for (let i = allNFTs.length - 1 ; i >= 0; i--){
-    if (!allNFTs[i].metadata || !allNFTs[i] ) {
+    if (!allNFTs[i].metadata || !allNFTs[i]) {
       allNFTs.splice(i, 1);
     }
   }
@@ -151,7 +154,7 @@ async function generateRarity(){
 
     // calculate the rarity score from having certain # of traits
     // append to the metadata the rarity score for having X number of traits
-    let rarityScoreNumTraits = 8 / (tally.TraitCount[Object.keys(current).length] / totalNum);
+    let rarityScoreNumTraits = 2.5 / (tally.TraitCount[Object.keys(current).length] / totalNum);
     current.push({ trait_type: "TraitCount", value: Object.keys(current).length, rarityScore: rarityScoreNumTraits, occurences: tally.TraitCount[Object.keys(current).length]});
     totalRarity += rarityScoreNumTraits;
 
@@ -234,6 +237,7 @@ async function generateRarity(){
     newObject.set("rarity", nftArr[i].Rarity);
     newObject.set("tokenId", nftArr[i].token_id);
     newObject.set("rank", nftArr[i].Rank);
+    // newObject.set("image", nftArr[i].image);
     newObject.set("image", nftArr[i].image);
     newObject.set("rarityPercentage", nftArr[i].RarityPercentage);
     newObject.set("collectionSize", collectionSize);

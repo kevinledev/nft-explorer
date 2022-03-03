@@ -63,7 +63,7 @@ body {
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
-  padding: 30px;
+  padding: 40px;
   gap: 8px;
 }
 
@@ -152,6 +152,7 @@ body {
   display:flex;
   flex-flow: column;
   align-items: center;
+  justify-content: flex-start;
   width: 45%;
   color: black;
   gap: 4px;
@@ -304,8 +305,8 @@ body {
 
 .card {
   width: 190px;
-  box-shadow: 0 2px 2px 0 black;
-  transition: 0.3s;
+  transition: 0.2s;
+  /* box-shadow: 0 2px 2px 0 black; */
   overflow: hidden;
   margin: 0;
   padding: 0;
@@ -316,7 +317,7 @@ body {
   background-color: rgb(4, 12, 18);
   font-size: 14px;
   box-sizing: border-box;
-
+  
   /* -webkit-animation: fadeIn 0.5s;
   -moz-animation: fadeIn 0.5s;
   -o-animation: fadeIn 0.5s;
@@ -325,7 +326,7 @@ body {
 
 .card:hover {
   cursor: pointer;
-  box-shadow: 0px 2px 2px 0px #dbdde0;
+  box-shadow: 0px 0px 5px 1px white;
   transform: translateY(-5px) scale(1.005) translateZ(0);
 }
 
