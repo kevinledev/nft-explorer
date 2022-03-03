@@ -20,6 +20,7 @@ function insertSpacesAndCapitalize(str) {
   if (str.includes("By")) str = str.replace("By", "by");
   if (str.includes("Bear")) str = str.replace(" Bear", "Bear");
   if (str.includes(" Verse")) str = str.replace(" Verse", "Verse");
+  if (str.includes("Mfers")) str = str.replace("M", "m");
   return str;
 }
 
@@ -94,7 +95,7 @@ async function fetchAndRenderCollection(collection, sortedBy, currentAmtCards) {
     img.src = data[i].attributes.image;
     imageWrapper.appendChild(img);
 
-    cardBodyRank.innerText = "Rank #" + data[i].attributes.rank;
+    cardBodyRank.innerText = "RANK " + data[i].attributes.rank;
     cardBodyDetail.innerText = "#" + data[i].attributes.tokenId;
 
     card.addEventListener("click", function () {
@@ -125,7 +126,7 @@ async function fetchAndRenderTokenDetails(collection, selectedTokenId) {
   let rank = document.createElement("div");
   rank.classList.add("rank");
   modalBodyLeft.appendChild(rank);
-  rank.innerText = `Rarity Rank #${selectedToken.attributes.rank}`;
+  rank.innerText = `RANK ${selectedToken.attributes.rank}`;
 
   let img = document.createElement("img");
   img.src = selectedToken.attributes.image;

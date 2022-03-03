@@ -1,9 +1,9 @@
 body {
-  background-color: rgb(32, 34, 37);
+  background-color: #0b0a0f;
   height: 100%;
   margin: 0;
   color: white;
-  font-family: "Helvetica", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 30px;
 }
 
@@ -23,7 +23,7 @@ body {
   flex-direction: horizontal;
   align-items: center;
   justify-content: space-between;
-  background-color: #000000;
+  background-color: #131318;
   color: white;
   width: 100%;
   height: 56px;
@@ -35,7 +35,6 @@ body {
   margin-left: 24px;
   box-sizing: border-box;
   display: block;
-  border-style: none;
 }
 
 .dropdown-menu {
@@ -44,18 +43,17 @@ body {
   justify-content: center;
   margin-top: 16px;
   box-sizing: border-box;
-  border-style: none;
 }
 
 .dropdown {
   margin-right: 24px;
   width: 500px;
-  background-color: #363840;
-  color: #8a939b;
+  background-color: #1f1f25;
+  color: #e1e0e8;
   font-size: large;
   text-align-last: center;
-  border-radius: 3px;
-  font-family: "Helvetica", sans-serif;
+  border-radius: 0.25rem;
+  font-family: "Lato", sans-serif;
 }
 
 .collection-wrapper {
@@ -64,19 +62,21 @@ body {
   /* justify-content: center; */
   align-items: center;
   padding: 40px;
-  gap: 8px;
 }
 
 #collection-name {
-  /* font-size: 36px; */
-  color: white;
+  font-size: 42px;
+  color: #e1e0e8;
   font-weight: 700;
 }
 
 #sort-order {
-  color: white;
+  color: #e1e0e8;
   font-weight: 700;
-  /* display:none; */
+  display:flex;
+  flex-flow: row;
+  align-items: center;
+  /* gap: 0px; */
 }
 
 .modal {
@@ -99,19 +99,19 @@ body {
   width: 800px;
   height: 800px;
   /* width: 80%; */
-  background-color: white;
-  border-radius: 3%;
+  background-color: none;
+  border-radius: 0.5rem;
 }
 
 .modal-body {
-  border-radius: 10px;
+  border-radius: 12px;
   display: flex;
   justify-content: between;
   align-items: center;
   /* margin-bottom: 30px; */
   height: 100%;
-  width: 800px;
-  background-color: rgb(32, 34, 37);
+  width: 100%;
+  background-color: #0b0a0f;
 }
 
 .modal-body-left {
@@ -130,14 +130,15 @@ body {
   text-align: center;
   flex-direction: column;
   justify-content: center;
-  font-size: 30px;
   text-align: center;
   gap: 10px;
+  font-weight: 700;
 }
 
 .rank {
   color:#007bfe;
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 36px;
 }
 
 .modal-body img {
@@ -165,15 +166,16 @@ body {
   font-size: 22px;
   background-color:#007bfe;;
   border-radius: 6px;
-  width: 90%;
+  width: 83%;
   height: 70;
   margin-bottom: 8px;
   justify-content: space between;
 }
 
 .rarity-score-label {
-  margin-top: 4px;
+  /* margin-top: 4px; */
   margin-bottom: 3px;
+  font-weight: 700;
 }
 
 .rarity-score {
@@ -182,32 +184,27 @@ body {
   align-items: center;
   font-size: 28px;
   font-weight: 700;
-  background-color:rgb(32, 34, 37);
+  background-color:#0b0a0f;
   color: white;
   border-radius: 5px;
-  width: 90%;
-  height: 32px;
+  width: 96.5%;
+  height: 36px;
 }
 
 .trait-and-score{
   font-size: 18px;
-  background-color: rgb(32, 34, 37);
+  background-color: #1e1e25;
   width: 80%;
   height: 22px;
   display:flex;
   flex-direction: horizontal;
   align-items: center;
-  color: white;
+  justify-content: space-between;
+  color: #e2e0e9;
   /* border: 1px solid white; */
 }
 
-.trait-and-score {
-  color: #dbdde0;
-  display:flex;
-  flex-direction: horizontal;
-  align-items: center;
-  justify-content: space-between;
-}
+
 
 .trait-score {
   font-weight: 700;
@@ -220,7 +217,7 @@ body {
   display:flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #8a939b;
+  background-color: #e1e0e8;
   border-radius: 4px;
   height: 24px;
   font-size: 18px;
@@ -253,7 +250,7 @@ body {
   margin: 0px auto 20px;
   max-width: 1400px;
   width: 100%;
-  gap: 16px;
+  gap: 20px;
   box-sizing: border-box;
   text-rendering: optimizeSpeed;
 }
@@ -304,7 +301,7 @@ body {
 }
 
 .card {
-  width: 190px;
+  width: 200px;
   transition: 0.2s;
   /* box-shadow: 0 2px 2px 0 black; */
   overflow: hidden;
@@ -312,9 +309,9 @@ body {
   padding: 0;
   line-height: 1.5715;
   position: relative;
-  border-radius: 10px;
+  border-radius: 0.5rem;
   border-color: white;
-  background-color: rgb(4, 12, 18);
+  background-color: #1e2025;
   font-size: 14px;
   box-sizing: border-box;
   
@@ -331,16 +328,18 @@ body {
 }
 
 .card-cover {
-  margin-top: -1px;
-  margin-right: -1px;
-  margin-left: -1px;
   box-sizing: border-box;
   cursor: pointer;
 }
 
 .card-body {
+  display:flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
   box-sizing: border-box;
   padding: 24px;
+  height: 84px;
   /* display: block; */
 }
 
@@ -364,16 +363,16 @@ body {
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 1.125rem;
 }
 
 .card-body-rank {
   color: #007bfe;
-  font-weight: 600;
+  font-weight: 900;
 }
 
 .card-body-detail {
-  color: #dbdde0;
+  color: #e1e0e8;
   font-weight: 600;
 }
 
