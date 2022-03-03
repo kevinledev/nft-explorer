@@ -1,8 +1,8 @@
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
-const Moralis = require('moralis/node');
+const fetch = (...args) =>
+  import("node-fetch").then(({ default: fetch }) => fetch(...args));
+const Moralis = require("moralis/node");
 // import Moralis from 'moralis/node.js';
 // import 'dotenv/config'
-
 
 // const serverUrl = process.env.SERVER_URL;
 // const appId = process.env.APPLICATION_ID;
@@ -11,8 +11,6 @@ const Moralis = require('moralis/node');
 const serverUrl = "https://zp5obq00poae.usemoralis.com:2053/server";
 const appId = "Vsfufr7b58Pbk14V5ZdAe412PCZp30ZktiHlPQdI";
 Moralis.start({ serverUrl, appId });
-
-
 
 // Done pulling data from these projects:
 // const contractAddress = "0x1A92f7381B9F03921564a437210bB9396471050C"
@@ -25,8 +23,6 @@ Moralis.start({ serverUrl, appId });
 // const collectionName = "BonsaiByZENFT"
 // const contractAddress = "0xba30E5F9Bb24caa003E9f2f0497Ad287FDF95623"
 // const collectionName = "BoredApeKennelClub"
-// const contractAddress = "0x67D9417C9C3c250f61A83C7e8658daC487B56B09";
-// const collectionName = "PhantaBear";
 // const contractAddress = "0x06aF447c72E18891FB65450f41134C00Cf7Ac28c";
 // const collectionName = "test";
 // const contractAddress = "0x3a5051566b2241285BE871f650C445A88A970edd";
@@ -34,19 +30,14 @@ Moralis.start({ serverUrl, appId });
 // const contractAddress = "0x79FCDEF22feeD20eDDacbB2587640e45491b757f";
 // const collectionName = "mfers";
 
-const contractAddress = "0xe437fed69Ec8eC6243d767cbaeA15A105f51875A";
-const collectionName = "THEPOPULARS";
-
-
-
-
+// const contractAddress = "0xe437fed69Ec8eC6243d767cbaeA15A105f51875A";
+// const collectionName = "THEPOPULARS";
 
 // function used to change the image link to gateway.ipfs
 const modifyImgLink = (url) => {
   if (!url || !url.includes("ipfs://")) return url;
   return url.replace("ipfs://", "https://gateway.ipfs.io/ipfs/");
 };
-
 
 // turn "https://gateway.pinata.cloud/ipfs/Qmen2mzFwV63VEpPD9jvgmqFio7q4wpqqeP2qhR61LCgRr"
 // into "https://robotos.mypinata.cloud/ipfs/Qmen2mzFwV63VEpPD9jvgmqFio7q4wpqqeP2qhR61LCgRr"
@@ -55,38 +46,34 @@ const modifyImgLink = (url) => {
 //   return url.replace("gateway.pinata", "robotos.mypinata");
 // };
 
-
-async function generateRarity(){
+async function generateRarity() {
   // returns an object with keys: total, page, page_size, cursor, result; the NFTs are stored in the "result"
   // we are concerned with the "metadata" object in the results, which contains the "attributes"
-  const NFTs = await Moralis.Web3API.token.getAllTokenIds({ address: contractAddress})
-  const totalNum = NFTs.total;         // total amount of NFTs in the collection
-  // const totalNum = 1200;
-  const pageSize = NFTs.page_size;     // amount of NFTs pulled from the Moralis .getAllTokenIds
-  let allNFTs = NFTs.result;           // all tokens(NFTs) listed in an object
-
+  const NFTs = await Moralis.Web3API.token.getAllTokenIds({
+    address: contractAddress,
+  });
+  const totalNum = NFTs.total; // total amount of NFTs in the collection
+  const pageSize = NFTs.page_size; // amount of NFTs pulled from the Moralis .getAllTokenIds
+  let allNFTs = NFTs.result; // all tokens(NFTs) listed in an object
 
   // Moralis queries only allow 500 objects at a time. Set a timer to query every 5100ms
+  const timer = (ms) => new Promise((res) => setTimeout(res, ms));
+  console.log(`Querying Moralis for ${collectionName}.`)
+  for (let i = pageSize; i < totalNum; i = i + pageSize) {
+    console.log(`Pulling from Moralis: ${i} NFTs pulled`)
+    const NFTs = await Moralis.Web3API.token.getAllTokenIds({
+      address: contractAddress,
+      offset: i,
+    });
+    allNFTs = allNFTs.concat(NFTs.result);
+    await timer(5100);
+  }
 
-  // const timer = (ms) => new Promise((res) => setTimeout(res, ms));
-  // console.log(`Querying Moralis for ${collectionName}.`)
-  // for (let i = pageSize; i < totalNum; i = i + pageSize) {
-  //   console.log(`Pulling from Moralis: ${i} NFTs pulled`)
-  //   const NFTs = await Moralis.Web3API.token.getAllTokenIds({
-  //     address: contractAddress,
-  //     offset: i,
-  //   });
-  //   allNFTs = allNFTs.concat(NFTs.result);
-  //   await timer(5100);
-  // }
-
-
-  for (let i = allNFTs.length - 1 ; i >= 0; i--){
+  for (let i = allNFTs.length - 1; i >= 0; i--) {
     if (!allNFTs[i].metadata || !allNFTs[i]) {
       allNFTs.splice(i, 1);
     }
   }
-  
 
   // each NFT(or token) pulled from the API contains a "metadata" object, which contains the "attributes"(aka NFT traits)
   // lists each NFT's attributes(object with keys 'trait_type' and 'value') from the metadata
@@ -99,7 +86,7 @@ async function generateRarity(){
     }
   }
 
-  let tally = {"TraitCount":{}};
+  let tally = { TraitCount: {} };
   for (let i = 0; i < metadata.length; i++) {
     let nftTraits = metadata[i].map((nft) => nft.trait_type);
     let nftValues = metadata[i].map((nft) => nft.value);
@@ -114,7 +101,7 @@ async function generateRarity(){
 
     // iterate through the NFTs to count the traits and values
     for (let j = 0; j < nftTraits.length; j++) {
-      // create new keys in the 'tally' object for trait_type 
+      // create new keys in the 'tally' object for trait_type
       // count each time that trait occurs
       let currentTrait = nftTraits[j];
       if (tally[currentTrait]) {
@@ -123,7 +110,7 @@ async function generateRarity(){
         tally[currentTrait] = { occurences: 1 };
       }
 
-      // create new keys in the 'tally' object for value 
+      // create new keys in the 'tally' object for value
       // count each time that trait value occurs
       let currentValue = nftValues[j];
       if (tally[currentTrait][currentValue]) {
@@ -134,30 +121,34 @@ async function generateRarity(){
     }
   }
 
-
   const collectionAttributes = Object.keys(tally);
   const nftArr = [];
   for (let i = 0; i < metadata.length; i++) {
     // iterate through the metadata, and calculate a rarity score for each trait value
     // an NFT would have rarityScore X if it contains trait value Y
-    let current = metadata[i];    // the metadata of nft i
+    let current = metadata[i]; // the metadata of nft i
     let totalRarity = 0;
-    
+
     // iterating through the trait types (e.g. body, shirt, face ,tier, hat)
-    for (let j = 0; j < current.length; j++) { 
+    for (let j = 0; j < current.length; j++) {
       // key into the tally to find the number of times a specific trait occurs in the collection
       let numTraitOccurences = tally[current[j].trait_type][current[j].value];
-      let rarityScore = 1 / (numTraitOccurences / totalNum);  // rarity score = 1 / trait rarity
+      let rarityScore = 1 / (numTraitOccurences / totalNum); // rarity score = 1 / trait rarity
       current[j].rarityScore = rarityScore;
       current[j].occurences = numTraitOccurences;
       totalRarity += rarityScore;
     }
-    
 
     // calculate the rarity score from having certain # of traits
     // append to the metadata the rarity score for having X number of traits
-    let rarityScoreNumTraits = 8 / (tally.TraitCount[Object.keys(current).length] / totalNum);
-    current.push({ trait_type: "TraitCount", value: Object.keys(current).length, rarityScore: rarityScoreNumTraits, occurences: tally.TraitCount[Object.keys(current).length]});
+    let rarityScoreNumTraits =
+      8 / (tally.TraitCount[Object.keys(current).length] / totalNum);
+    current.push({
+      trait_type: "TraitCount",
+      value: Object.keys(current).length,
+      rarityScore: rarityScoreNumTraits,
+      occurences: tally.TraitCount[Object.keys(current).length],
+    });
     totalRarity += rarityScoreNumTraits;
 
     // calculate rarity for an NFT missing a trait
@@ -171,9 +162,14 @@ async function generateRarity(){
 
       // append to the metadata the rarity score for having a missing trait
       absent.forEach((trait) => {
-        let rarityScoreNull = 
+        let rarityScoreNull =
           1 / ((totalNum - tally[trait].occurences) / totalNum);
-        current.push({ trait_type: trait, value: null, rarityScore: rarityScoreNull, occurences: (totalNum - tally[trait].occurences)});
+        current.push({
+          trait_type: trait,
+          value: null,
+          rarityScore: rarityScoreNull,
+          occurences: totalNum - tally[trait].occurences,
+        });
         totalRarity += rarityScoreNull;
       });
     }
@@ -197,35 +193,16 @@ async function generateRarity(){
     }
 
     // let imageLink = "https://nft-media.b-cdn.net/alienfrensnft/" + allNFTs[i].token_id + ".png?width=512&height=512";
-    nftArr.push({ 
-      Attributes: current, 
-      Rarity: totalRarity, 
+    nftArr.push({
+      Attributes: current,
+      Rarity: totalRarity,
       token_id: allNFTs[i].token_id,
       image: allNFTs[i].image,
-    })
+    });
   }
 
   // Sort by rarity
   nftArr.sort((a, b) => b.Rarity - a.Rarity);
-
-  // // get the max rarity score to use in rarity percentage calculation
-  // let maxRarity = nftArr[0].Rarity;
-
-  // add rarity percentages to each trait, and add up the rarity percentage
-  // for (let i = 0; i < nftArr.length; i++) {
-  //   for (let j = 0; j < nftArr[i].Attributes.length; j++) {
-  //     let current = nftArr[i].Attributes[j];
-  //     let rarityPercent = (current.rarityScore / maxRarity) * 100;
-  //     Object.assign(current, {rarityPercentage: rarityPercent});
-
-  //     if (!nftArr[i].RarityPercentage) {
-  //       Object.assign(nftArr[i], {RarityPercentage: rarityPercent})
-  //     } else {
-  //       nftArr[i].RarityPercentage += rarityPercent;
-  //     }
-  //   }
-  // }
-
 
   let collectionSize = nftArr.length;
   for (let i = 0; i < nftArr.length; i++) {
@@ -239,14 +216,12 @@ async function generateRarity(){
     newObject.set("rarity", nftArr[i].Rarity);
     newObject.set("tokenId", nftArr[i].token_id);
     newObject.set("rank", nftArr[i].Rank);
-    // newObject.set("image", nftArr[i].image);
     newObject.set("image", nftArr[i].image);
-    newObject.set("rarityPercentage", nftArr[i].RarityPercentage);
     newObject.set("collectionSize", collectionSize);
     await newObject.save();
-    console.log(`i=${i}: ${i+1}/${collectionSize} ${collectionName} stored.`);
+    console.log(`i=${i}: ${i + 1}/${collectionSize} ${collectionName} stored.`);
   }
   return true;
-};
+}
 
 generateRarity();
