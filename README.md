@@ -26,7 +26,8 @@ async function fetchAndRenderCollection() {
 }
 ```
 
-```async function fetchAndRenderTokenDetails() {
+```
+async function fetchAndRenderTokenDetails() {
     1. create the structure for the modal (window, body, left and right boxes, total rarity score)
     2. for the NFT this is being called on, loop through the NFT traits {
         i. render the trait type and rarity score for having that trait
