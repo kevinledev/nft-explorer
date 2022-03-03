@@ -61,7 +61,7 @@ body {
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
-  padding: 40px;
+  padding: 50px;
 }
 
 #collection-name {
@@ -76,7 +76,7 @@ body {
   display:flex;
   flex-flow: row;
   align-items: center;
-  /* gap: 0px; */
+  /* gap: 10px; */
 }
 
 .modal {
@@ -248,7 +248,7 @@ body {
   -webkit-box-pack: start;
   justify-content: center;
   margin: 0px auto 20px;
-  max-width: 1400px;
+  max-width: 1200px;
   width: 100%;
   gap: 20px;
   box-sizing: border-box;
@@ -301,7 +301,7 @@ body {
 }
 
 .card {
-  width: 200px;
+  width: 220px;
   transition: 0.2s;
   /* box-shadow: 0 2px 2px 0 black; */
   overflow: hidden;

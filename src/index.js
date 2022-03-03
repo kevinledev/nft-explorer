@@ -50,7 +50,7 @@ const throttleFunction = (func, delay) => {
 async function getCollectionData(collection, sortedBy, currentAmtCards) {
   const query = new Moralis.Query(collection);
   query.ascending(sortedBy);
-  const topNFTs = query.skip(currentAmtCards).limit(48);
+  const topNFTs = query.skip(currentAmtCards).limit(25);
   const results = await topNFTs.find();
   console.log(results);
 
