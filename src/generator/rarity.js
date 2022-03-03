@@ -8,9 +8,9 @@ const Moralis = require('moralis/node');
 // const appId = process.env.APPLICATION_ID;
 // Moralis.start({ serverUrl, appId });
 
-  const serverUrl = "https://zp5obq00poae.usemoralis.com:2053/server";
-  const appId = "Vsfufr7b58Pbk14V5ZdAe412PCZp30ZktiHlPQdI";
-  Moralis.start({ serverUrl, appId });
+const serverUrl = "https://zp5obq00poae.usemoralis.com:2053/server";
+const appId = "Vsfufr7b58Pbk14V5ZdAe412PCZp30ZktiHlPQdI";
+Moralis.start({ serverUrl, appId });
 
 
 
@@ -31,9 +31,11 @@ const Moralis = require('moralis/node');
 // const collectionName = "test";
 // const contractAddress = "0x3a5051566b2241285BE871f650C445A88A970edd";
 // const collectionName = "TheHumanoids";
+// const contractAddress = "0x79FCDEF22feeD20eDDacbB2587640e45491b757f";
+// const collectionName = "mfers";
 
-const contractAddress = "0x69B9C98e8D715C25B330d0D4eB07e68CbB7F6CFC";
-const collectionName = "Starcatchers";
+const contractAddress = "0xe437fed69Ec8eC6243d767cbaeA15A105f51875A";
+const collectionName = "THEPOPULARS";
 
 
 
@@ -154,7 +156,7 @@ async function generateRarity(){
 
     // calculate the rarity score from having certain # of traits
     // append to the metadata the rarity score for having X number of traits
-    let rarityScoreNumTraits = 2.5 / (tally.TraitCount[Object.keys(current).length] / totalNum);
+    let rarityScoreNumTraits = 8 / (tally.TraitCount[Object.keys(current).length] / totalNum);
     current.push({ trait_type: "TraitCount", value: Object.keys(current).length, rarityScore: rarityScoreNumTraits, occurences: tally.TraitCount[Object.keys(current).length]});
     totalRarity += rarityScoreNumTraits;
 
@@ -206,23 +208,23 @@ async function generateRarity(){
   // Sort by rarity
   nftArr.sort((a, b) => b.Rarity - a.Rarity);
 
-  // get the max rarity score to use in rarity percentage calculation
-  let maxRarity = nftArr[0].Rarity;
+  // // get the max rarity score to use in rarity percentage calculation
+  // let maxRarity = nftArr[0].Rarity;
 
   // add rarity percentages to each trait, and add up the rarity percentage
-  for (let i = 0; i < nftArr.length; i++) {
-    for (let j = 0; j < nftArr[i].Attributes.length; j++) {
-      let current = nftArr[i].Attributes[j];
-      let rarityPercent = (current.rarityScore / maxRarity) * 100;
-      Object.assign(current, {rarityPercentage: rarityPercent});
+  // for (let i = 0; i < nftArr.length; i++) {
+  //   for (let j = 0; j < nftArr[i].Attributes.length; j++) {
+  //     let current = nftArr[i].Attributes[j];
+  //     let rarityPercent = (current.rarityScore / maxRarity) * 100;
+  //     Object.assign(current, {rarityPercentage: rarityPercent});
 
-      if (!nftArr[i].RarityPercentage) {
-        Object.assign(nftArr[i], {RarityPercentage: rarityPercent})
-      } else {
-        nftArr[i].RarityPercentage += rarityPercent;
-      }
-    }
-  }
+  //     if (!nftArr[i].RarityPercentage) {
+  //       Object.assign(nftArr[i], {RarityPercentage: rarityPercent})
+  //     } else {
+  //       nftArr[i].RarityPercentage += rarityPercent;
+  //     }
+  //   }
+  // }
 
 
   let collectionSize = nftArr.length;
