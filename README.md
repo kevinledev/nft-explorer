@@ -1,5 +1,7 @@
 <h1 align="center">NFT Explorer</h1>
 
+<h2>[Live Site](https://kevinledev.github.io/nft-explorer/)</h2>
+
 NFT Explorer is an app that collects data for certain NFT projects, and ranks the NFTs by their rarity. This app helps provide an easy to understand ranking of the rarity of the NFTs, which users can quickly tell if an NFT is rare or not. Therefore, NFT collectors can easily compare the value of NFTs with each other to make quicker and faster decisions.
 
 NFT Explorer is powered by the Moralis API, a “Web 3” web development platform. The app is written in Javascript, HTML, and CSS.
