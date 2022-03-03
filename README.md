@@ -16,6 +16,7 @@ Sometimes an NFT might not even have a “metadata” object stored in the code,
 
 Another technical feature I am proud of is having my app render each NFT, and rendering the modal to display the NFT traits corresponding to the specific NFT that is clicked on. The NFT collection is rendered upon selecting a project in the dropdown and iterating through the queried data. During the render for each NFT card, I embedded an event listener in each NFT card to call the async fetchAndRenderTokenDetails() function that would render the modal for the respective NFT. I found it very interesting how specific data for an NFT can be displayed using this multi-layered approach.
 
+```
 async function fetchAndRenderCollection() {
     1. query from database
     2. loop through query results (each NFT) {
@@ -23,15 +24,16 @@ async function fetchAndRenderCollection() {
         ii. add event listener to call fetchAndRenderTokenDetails() when clicked
     }
 }
+```
 
-async function fetchAndRenderTokenDetails() {
+```async function fetchAndRenderTokenDetails() {
     1. create the structure for the modal (window, body, left and right boxes, total rarity score)
     2. for the NFT this is being called on, loop through the NFT traits {
         i. render the trait type and rarity score for having that trait
         Ii. render the trait value and number of times this value occurs in the collection 
     }
 }
-
+```
 
 
 this section below is the proposal
