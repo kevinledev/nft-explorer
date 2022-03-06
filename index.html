@@ -8,9 +8,16 @@
       href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap"
       rel="stylesheet"
     />
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./src/styles/style.css" />
     <title>NFT Explorer</title>
     <script type="module" src="./dist/main.js"></script>
@@ -28,27 +35,36 @@
             class="logo"
             src="./assets/logo-white.png"
             alt="imgname"
-            height="36px"
           />
         </a>
 
-        <form class="dropdown-menu" name="collection">
-          <select id="dropdown" class="dropdown">
-            <option value="" disabled selected>Select Collection</option>
-            <option value="CoolCats">Cool Cats</option>
-            <option value="Robotos">Robotos</option>
-            <option value="Doodles">Doodles</option>
-            <option value="BonsaiByZENFT">Bonsai by ZENFT</option>
-            <option value="BoredApeKennelClub">Bored Ape Kennel Club</option>
-            <!-- <option value="PhantaBear">PhantaBear</option> -->
-            <option value="SushiVerse">SushiVerse</option>
-            <option value="TheHumanoids">The Humanoids</option>
-            <option value="mfers">mfers</option>
-            <!-- <option value="WonderPals">WonderPals</option> -->
-          </select>
-        </form>
+        <div id="nav-spacer-1"></div>
 
-        <div class="links" style="margin-right: 96px; color:#131318;">add stuff here</div>
+        <select id="dropdown" class="dropdown">
+          <option value="" disabled selected>Select Collection</option>
+          <option value="CoolCats">Cool Cats</option>
+          <option value="Robotos">Robotos</option>
+          <option value="Doodles">Doodles</option>
+          <option value="BonsaiByZENFT">Bonsai by ZENFT</option>
+          <option value="BoredApeKennelClub">Bored Ape Kennel Club</option>
+          <!-- <option value="PhantaBear">PhantaBear</option> -->
+          <option value="SushiVerse">SushiVerse</option>
+          <option value="TheHumanoids">The Humanoids</option>
+          <option value="mfers">mfers</option>
+          <!-- <option value="WonderPals">WonderPals</option> -->
+        </select>
+
+        <div id="nav-spacer-2"></div>
+
+        <div class="personal-links">
+          <a href="https://www.linkedin.com/in/kvnle/" style="text-decoration: none; color: white"></i>
+            <i id="linkedin" class="fa fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/kevinledev" style="text-decoration: none; color: white">          
+            <i class="fa fa-github"></i>
+          </a>
+
+        </div>
       </nav>
     </header>
 
@@ -56,12 +72,12 @@
       <div id="collection-name"></div>
       <div id="sort-order">
         NFT Rarity Ranking
-          <img
-            class="verified"
-            src="./assets/verified.svg"
-            alt="imgname"
-            height="28px"
-          />
+        <img
+          class="verified"
+          src="./assets/verified.svg"
+          alt="imgname"
+          height="28px"
+        />
       </div>
     </div>
 
@@ -75,9 +91,7 @@
 
     <div class="modal">
       <div class="modal-box">
-        <div class="modal-body">
-
-        </div>
+        <div class="modal-body"></div>
       </div>
     </div>
 

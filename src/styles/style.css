@@ -5,6 +5,7 @@ body {
   color: white;
   font-family: 'Lato', sans-serif;
   font-size: 30px;
+  padding: 0px
 }
 
 html {
@@ -20,34 +21,31 @@ body {
 
 .nav-bar {
   display: flex;
-  flex-direction: horizontal;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
   background-color: #131318;
   color: white;
   width: 100%;
   height: 56px;
   font-size: 16px;
+  position: fixed;
+  top: 0px;
+  z-index: 69;
 }
 
 .logo {
+  max-height: 36px;
   max-width: 100%;
-  margin-left: 24px;
   box-sizing: border-box;
-  display: block;
+  top: 20px;
+  margin-left: 18px;
 }
 
-.dropdown-menu {
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  margin-top: 16px;
-  box-sizing: border-box;
-}
 
 .dropdown {
-  margin-right: 24px;
-  width: 500px;
+  height: 36px;
+  width: 40%;
   background-color: #1f1f25;
   color: #e1e0e8;
   font-size: large;
@@ -56,12 +54,28 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+#nav-spacer-2 {
+  width: 128px;
+}
+
+.personal-links {
+  display: flex;
+  font-size: 30px;
+  gap: 20px;
+  margin-right: 18px;
+}
+
+
+
+
 .collection-wrapper {
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
+  max-width: 100%;
   padding: 50px;
+  margin-top: 36px;
 }
 
 #collection-name {
@@ -248,8 +262,8 @@ body {
   -webkit-box-pack: start;
   justify-content: center;
   margin: 0px auto 20px;
+  min-width: 400px;
   max-width: 1200px;
-  width: 100%;
   gap: 20px;
   box-sizing: border-box;
   text-rendering: optimizeSpeed;
@@ -301,7 +315,7 @@ body {
 }
 
 .card {
-  width: 220px;
+  width: 190px;
   transition: 0.2s;
   /* box-shadow: 0 2px 2px 0 black; */
   overflow: hidden;
