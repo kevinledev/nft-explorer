@@ -58,9 +58,9 @@ async function generateRarity() {
 
   // Moralis queries only allow 500 objects at a time. Set a timer to query every 5100ms
   const timer = (ms) => new Promise((res) => setTimeout(res, ms));
-  console.log(`Querying Moralis for ${collectionName}.`)
+  console.log(`Querying Moralis for ${collectionName}.`);
   for (let i = pageSize; i < totalNum; i = i + pageSize) {
-    console.log(`Pulling from Moralis: ${i} NFTs pulled`)
+    console.log(`Pulling from Moralis: ${i} NFTs pulled`);
     const NFTs = await Moralis.Web3API.token.getAllTokenIds({
       address: contractAddress,
       offset: i,

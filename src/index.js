@@ -1,4 +1,6 @@
 // const Moralis = require("moralis");
+import insertSpacesAndCapitalize from "./helper/insert-spaces.js";
+import throttleFunction from "./helper/throttle.js";
 
 function startServer() {
   const serverUrl = "https://zp5obq00poae.usemoralis.com:2053/server";
@@ -6,46 +8,6 @@ function startServer() {
   Moralis.start({ serverUrl, appId });
 }
 
-
-// add spaces to the collection name taken from the database
-// from "StringWithSpaces" to "String With Spaces"
-function insertSpacesAndCapitalize(str) {
-  const words = str.split(" ");
-  for (let i = 0; i < words.length; i++) {
-    words[i] = words[i][0].toUpperCase() + words[i].substr(1);
-  }
-  str = words.join(" ");
-  str = str.replace(/([a-z])([A-Z])/g, "$1 $2");
-  str = str.replace(/([A-Z])([A-Z][a-z])/g, "$1 $2");
-  if (str.includes("By")) str = str.replace("By", "by");
-  if (str.includes("Bear")) str = str.replace(" Bear", "Bear");
-  if (str.includes(" Verse")) str = str.replace(" Verse", "Verse");
-  if (str.includes("Mfers")) str = str.replace("M", "m");
-  return str;
-}
-
-const throttleFunction = (func, delay) => {
-  // Previously called time of the function
-  let prev = 0;
-  return (...args) => {
-    // Current called time of the function
-    let now = new Date().getTime();
-
-    // Logging the difference between previously
-    // called and current called timings
-
-    // If difference is greater than delay call
-    // the function again.
-    if (now - prev > delay) {
-      prev = now;
-
-      // "..." is the spread operator here
-      // returning the function with the
-      // array of arguments
-      return func(...args);
-    }
-  };
-};
 
 async function getCollectionData(collection, sortedBy, currentAmtCards) {
   const query = new Moralis.Query(collection);
@@ -197,7 +159,6 @@ async function fetchAndRenderTokenDetails(collection, selectedTokenId) {
 }
 
 function loadMore() {
-
   let collection = document.getElementById("gallery").className;
   let amountCardsLoaded = document.querySelectorAll(".card").length;
   let sortOrder = document.querySelector("#sort-order").className;
