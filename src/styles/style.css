@@ -135,6 +135,7 @@ body {
   background-color:#007bfe;
   color: white;
   border: none;
+  font-weight:700;
 }
 
 #jump-to:focus {

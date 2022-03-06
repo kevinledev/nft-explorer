@@ -188,18 +188,20 @@ document.addEventListener("DOMContentLoaded", (event) => {
   document.getElementById("jump-button").addEventListener("click", function () {
     let num = document.getElementById("jump-to");
     let currentCollection = document.getElementById("gallery").className;
+    let currentSortBy = document.getElementById("sort-by").value;
     document.querySelectorAll(".card").forEach((e) => e.remove());
+    // fetchAndRenderCollection(currentCollection, currentSortBy, num.value - 1);
     fetchAndRenderCollection(currentCollection, "rank", num.value - 1);
   });
 
   document.getElementById("sort-by").addEventListener("change", function () {
     let currentCollection = document.getElementById("gallery").className;
     document.querySelectorAll(".card").forEach((e) => e.remove());
-    if (this.value === "rank") {
+    // if (this.value === "rank") {
       document.getElementById("jump-to").placeholder = `Jump To Rank`;
-    } else if (this.value === "tokenId") {
-      document.getElementById("jump-to").placeholder = `Jump To Token ID`;
-    }
+    // } else if (this.value === "tokenId") {
+    //   document.getElementById("jump-to").placeholder = `Jump To Token ID`;
+    // }
     fetchAndRenderCollection(currentCollection, this.value, 0);
   });
 

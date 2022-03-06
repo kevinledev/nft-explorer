@@ -12,7 +12,7 @@
   "scripts": {
     "start": "node app.js",
     "start:debug": "node --inspect app.js",
-    "watch": "webpack --watch --mode=development",
+    "watch": "twebpack --watch --mode=developmen",
     "build": "webpack --mode=production"
   },
   "keywords": [],
