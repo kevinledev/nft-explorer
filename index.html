@@ -82,17 +82,15 @@
     </div>
 
     <div class="sort-wrapper">
-      <div>
+      <div class="jump-text-button">
         <input id="jump-to" placeholder="Jump To Rank" type="text"></input>
         <button id="jump-button">Go</button>
       </div>
-      <div id="sort-by">
-        <select>
-          <option selected="selected">Rarity</option>
-          <option>Token ID</option>
-        </select>
-        <button id="sort-token-id">sort by token id:</button>
-      </div>
+      <select id="sort-by">
+        <option selected="selected" value="rank">Rarity</option>
+        <option value="tokenId">Token ID</option>
+      </select>
+
     </div>
 
     <div class="modal">

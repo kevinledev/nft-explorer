@@ -72,7 +72,7 @@ body {
   /* justify-content: center; */
   align-items: center;
   max-width: 100%;
-  padding: 50px;
+  padding: 36px;
   margin-top: 36px;
 }
 
@@ -89,6 +89,25 @@ body {
   flex-flow: row;
   align-items: center;
   /* gap: 10px; */
+}
+
+.sort-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 20px;
+  font-size: 36px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+}
+
+.jump-text-button {
+  display: flex;
+}
+
+#jump-to {
 }
 
 .modal {
@@ -262,7 +281,7 @@ body {
   margin: 0px auto 20px;
   min-width: 400px;
   max-width: 1200px;
-  gap: 20px;
+  gap: 18px;
   box-sizing: border-box;
   text-rendering: optimizeSpeed;
 }
@@ -350,7 +369,7 @@ body {
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 24px;
+  padding: 16px;
   height: 84px;
   /* display: block; */
 }

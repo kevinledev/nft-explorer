@@ -8,7 +8,6 @@ function startServer() {
   Moralis.start({ serverUrl, appId });
 }
 
-
 async function getCollectionData(collection, sortedBy, currentAmtCards) {
   const query = new Moralis.Query(collection);
   query.ascending(sortedBy);
@@ -65,7 +64,6 @@ async function fetchAndRenderCollection(collection, sortedBy, currentAmtCards) {
     });
   }
   let titleText = document.querySelector("#collection-name");
-  document.querySelector("#sort-order").classList.add(sortedBy);
   titleText.innerText = insertSpacesAndCapitalize(collection);
 }
 
@@ -97,7 +95,9 @@ async function fetchAndRenderTokenDetails(collection, selectedTokenId) {
   let collAndId = document.createElement("div");
   collAndId.classList.add("collection-and-id");
   modalBodyLeft.appendChild(collAndId);
-  collAndId.innerText = `${insertSpacesAndCapitalize(collection)} #${selectedTokenId}`;
+  collAndId.innerText = `${insertSpacesAndCapitalize(
+    collection
+  )} #${selectedTokenId}`;
 
   let modalBodyRight = document.createElement("div");
   modalBodyRight.classList.add("modal-body-right");
@@ -161,7 +161,7 @@ async function fetchAndRenderTokenDetails(collection, selectedTokenId) {
 function loadMore() {
   let collection = document.getElementById("gallery").className;
   let amountCardsLoaded = document.querySelectorAll(".card").length;
-  let sortOrder = document.querySelector("#sort-order").className;
+  let sortOrder = document.getElementById("sort-by").value;
   console.log(amountCardsLoaded + "cards loaded. Now loading more");
   fetchAndRenderCollection(collection, sortOrder, amountCardsLoaded);
 }
@@ -177,23 +177,31 @@ document.addEventListener("DOMContentLoaded", (event) => {
   startServer();
   let currentAmtCards = 0;
 
-
   fetchAndRenderCollection("CoolCats", "rank", 0);
 
   document.getElementById("dropdown").addEventListener("change", function () {
     document.querySelectorAll(".card").forEach((e) => e.remove());
     changeCollection(this.value);
-    console.log(this.id);
+    console.log(this.value);
   });
-
 
   document.getElementById("jump-button").addEventListener("click", function () {
     let num = document.getElementById("jump-to");
     let currentCollection = document.getElementById("gallery").className;
     document.querySelectorAll(".card").forEach((e) => e.remove());
-    fetchAndRenderCollection(currentCollection, "rank", num.value-1);
-  })
+    fetchAndRenderCollection(currentCollection, "rank", num.value - 1);
+  });
 
+  document.getElementById("sort-by").addEventListener("change", function () {
+    let currentCollection = document.getElementById("gallery").className;
+    document.querySelectorAll(".card").forEach((e) => e.remove());
+    if (this.value === "rank") {
+      document.getElementById("jump-to").placeholder = `Jump To Rank`;
+    } else if (this.value === "tokenId") {
+      document.getElementById("jump-to").placeholder = `Jump To Token ID`;
+    }
+    fetchAndRenderCollection(currentCollection, this.value, 0);
+  });
 
   let modal = document.querySelector(".modal");
   modal.addEventListener("click", function (event) {
