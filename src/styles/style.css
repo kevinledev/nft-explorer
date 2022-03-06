@@ -1,3 +1,5 @@
+
+
 body {
   background-color: #0b0a0f;
   height: 100%;
@@ -88,7 +90,8 @@ body {
   display:flex;
   flex-flow: row;
   align-items: center;
-  /* gap: 10px; */
+  font-size: 36px;
+  gap: 10px;
 }
 
 .sort-wrapper {
@@ -96,7 +99,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 36px;
   font-size: 36px;
   margin-left: auto;
   margin-right: auto;
@@ -105,9 +108,47 @@ body {
 
 .jump-text-button {
   display: flex;
+  height: 30px;
+  border: 1px solid rgb(61 61 74);
+  border-radius: 0.5rem;
+  background-color: #1f1f25;
+  overflow: hidden;
 }
 
 #jump-to {
+  width: 132px;
+  background-color: #1f1f25;
+
+  color: white;
+  font-size: medium;
+  border: none;
+}
+
+#jump-to::placeholder {
+  color:grey;
+}
+
+#jump-button {
+  border-radius: 0.5rem;
+  width: 40px;
+  font-size: medium;
+  background-color:#007bfe;
+  color: white;
+  border: none;
+}
+
+#jump-to:focus {
+  outline: none;
+}
+
+#sort-by{
+  font-size: medium;
+  height: 30px;
+  width: 164px;
+  background-color:#007bfe;
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
 }
 
 .modal {
