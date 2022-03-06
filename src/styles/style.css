@@ -99,11 +99,11 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 30px;
-  margin-bottom: 36px;
+  margin-bottom: 30px;
   font-size: 36px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1000px;
+  max-width: 1028px;
 }
 
 .jump-text-button {
@@ -322,7 +322,7 @@ body {
   margin: 0px auto 20px;
   min-width: 400px;
   max-width: 1200px;
-  gap: 18px;
+  gap: 16px;
   box-sizing: border-box;
   text-rendering: optimizeSpeed;
 }
@@ -373,7 +373,7 @@ body {
 }
 
 .card {
-  width: 190px;
+  width: 200px;
   transition: 0.2s;
   /* box-shadow: 0 2px 2px 0 black; */
   overflow: hidden;
@@ -386,11 +386,6 @@ body {
   background-color: #1e2025;
   font-size: 14px;
   box-sizing: border-box;
-  
-  /* -webkit-animation: fadeIn 0.5s;
-  -moz-animation: fadeIn 0.5s;
-  -o-animation: fadeIn 0.5s;
-  -ms-animation: fadeIn 0.5s; */
 }
 
 .card:hover {
