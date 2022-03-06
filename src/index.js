@@ -186,6 +186,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
     console.log(this.id);
   });
 
+
+  document.getElementById("jump-button").addEventListener("click", function () {
+    let num = document.getElementById("jump-to");
+    let currentCollection = document.getElementById("gallery").className;
+    document.querySelectorAll(".card").forEach((e) => e.remove());
+    fetchAndRenderCollection(currentCollection, "rank", num.value-1);
+  })
+
+
   let modal = document.querySelector(".modal");
   modal.addEventListener("click", function (event) {
     if (event.target === this) {
