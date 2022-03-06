@@ -118,10 +118,11 @@ body {
 #jump-to {
   width: 132px;
   background-color: #1f1f25;
-
+  text-align-last: center;
   color: white;
   font-size: medium;
   border: none;
+  text-align: center;
 }
 
 #jump-to::placeholder {
@@ -136,6 +137,7 @@ body {
   color: white;
   border: none;
   font-weight:700;
+  text-align: center;
 }
 
 #jump-to:focus {
@@ -150,6 +152,7 @@ body {
   border: none;
   border-radius: 0.5rem;
   color: white;
+  text-align-last: center;
 }
 
 .modal {
