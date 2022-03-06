@@ -158,6 +158,10 @@ async function fetchAndRenderTokenDetails(collection, selectedTokenId) {
   }
 }
 
+async function checkTokenIdExists(tokenIdInt) {
+  
+}
+
 function loadMore() {
   let collection = document.getElementById("gallery").className;
   let amountCardsLoaded = document.querySelectorAll(".card").length;
@@ -187,21 +191,27 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   document.getElementById("jump-button").addEventListener("click", function () {
     let num = document.getElementById("jump-to");
+    num = parseInt(num.value);
     let currentCollection = document.getElementById("gallery").className;
     let currentSortBy = document.getElementById("sort-by").value;
+    console.log(currentSortBy);
+    console.log(num);
     document.querySelectorAll(".card").forEach((e) => e.remove());
-    // fetchAndRenderCollection(currentCollection, currentSortBy, num.value - 1);
-    fetchAndRenderCollection(currentCollection, "rank", num.value - 1);
+    if (currentSortBy === "tokenIdInt") {
+      fetchAndRenderCollection(currentCollection, "tokenIdInt", num);
+    } else {
+      fetchAndRenderCollection(currentCollection, "rank", num - 1);
+    }
   });
 
   document.getElementById("sort-by").addEventListener("change", function () {
     let currentCollection = document.getElementById("gallery").className;
     document.querySelectorAll(".card").forEach((e) => e.remove());
-    // if (this.value === "rank") {
+    if (this.value === "rank") {
       document.getElementById("jump-to").placeholder = `Jump To Rank`;
-    // } else if (this.value === "tokenId") {
-    //   document.getElementById("jump-to").placeholder = `Jump To Token ID`;
-    // }
+    } else if (this.value === "tokenIdInt") {
+      document.getElementById("jump-to").placeholder = `Jump To Token ID`;
+    }
     fetchAndRenderCollection(currentCollection, this.value, 0);
   });
 

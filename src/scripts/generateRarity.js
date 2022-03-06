@@ -15,10 +15,13 @@ Moralis.start({ serverUrl, appId });
 // Done pulling data from these projects:
 // const contractAddress = "0x1A92f7381B9F03921564a437210bB9396471050C"
 // const collectionName = "CoolCats"
+const contractAddress = "0x8a90CAb2b38dba80c64b7734e58Ee1dB38B8992e"
+const collectionName = "Doodles"
+
+
+
 // const contractAddress = "0x099689220846644F87D1137665CDED7BF3422747"
 // const collectionName = "Robotos"
-// const contractAddress = "0x8a90CAb2b38dba80c64b7734e58Ee1dB38B8992e"
-// const collectionName = "Doodles"
 // const contractAddress = "0xeC9C519D49856Fd2f8133A0741B4dbE002cE211b"
 // const collectionName = "BonsaiByZENFT"
 // const contractAddress = "0xba30E5F9Bb24caa003E9f2f0497Ad287FDF95623"
@@ -142,7 +145,7 @@ async function generateRarity() {
     // calculate the rarity score from having certain # of traits
     // append to the metadata the rarity score for having X number of traits
     let rarityScoreNumTraits =
-      8 / (tally.TraitCount[Object.keys(current).length] / totalNum);
+      1 / (tally.TraitCount[Object.keys(current).length] / totalNum);
     current.push({
       trait_type: "TraitCount",
       value: Object.keys(current).length,
@@ -215,6 +218,7 @@ async function generateRarity() {
     newObject.set("attributes", nftArr[i].Attributes);
     newObject.set("rarity", nftArr[i].Rarity);
     newObject.set("tokenId", nftArr[i].token_id);
+    newObject.set("tokenIdInt", parseInt(nftArr[i].token_id));
     newObject.set("rank", nftArr[i].Rank);
     newObject.set("image", nftArr[i].image);
     newObject.set("collectionSize", collectionSize);
