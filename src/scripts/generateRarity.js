@@ -15,13 +15,13 @@ Moralis.start({ serverUrl, appId });
 // Done pulling data from these projects:
 // const contractAddress = "0x1A92f7381B9F03921564a437210bB9396471050C"
 // const collectionName = "CoolCats"
-const contractAddress = "0x8a90CAb2b38dba80c64b7734e58Ee1dB38B8992e"
-const collectionName = "Doodles"
+// const contractAddress = "0x8a90CAb2b38dba80c64b7734e58Ee1dB38B8992e"
+// const collectionName = "Doodles"
 
 
 
-// const contractAddress = "0x099689220846644F87D1137665CDED7BF3422747"
-// const collectionName = "Robotos"
+const contractAddress = "0x099689220846644F87D1137665CDED7BF3422747"
+const collectionName = "Robotos"
 // const contractAddress = "0xeC9C519D49856Fd2f8133A0741B4dbE002cE211b"
 // const collectionName = "BonsaiByZENFT"
 // const contractAddress = "0xba30E5F9Bb24caa003E9f2f0497Ad287FDF95623"
@@ -37,17 +37,17 @@ const collectionName = "Doodles"
 // const collectionName = "THEPOPULARS";
 
 // function used to change the image link to gateway.ipfs
-const modifyImgLink = (url) => {
-  if (!url || !url.includes("ipfs://")) return url;
-  return url.replace("ipfs://", "https://gateway.ipfs.io/ipfs/");
-};
+// const modifyImgLink = (url) => {
+//   if (!url || !url.includes("ipfs://")) return url;
+//   return url.replace("ipfs://", "https://gateway.ipfs.io/ipfs/");
+// };
 
 // turn "https://gateway.pinata.cloud/ipfs/Qmen2mzFwV63VEpPD9jvgmqFio7q4wpqqeP2qhR61LCgRr"
 // into "https://robotos.mypinata.cloud/ipfs/Qmen2mzFwV63VEpPD9jvgmqFio7q4wpqqeP2qhR61LCgRr"
-// const modifyImgLink = (url) => {
-//   if (!url) return url;
-//   return url.replace("gateway.pinata", "robotos.mypinata");
-// };
+const modifyImgLink = (url) => {
+  if (!url) return url;
+  return url.replace("gateway.pinata", "robotos.mypinata");
+};
 
 async function generateRarity() {
   // returns an object with keys: total, page, page_size, cursor, result; the NFTs are stored in the "result"
