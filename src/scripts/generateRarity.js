@@ -17,17 +17,26 @@ Moralis.start({ serverUrl, appId });
 // const collectionName = "CoolCats"
 // const contractAddress = "0x8a90CAb2b38dba80c64b7734e58Ee1dB38B8992e"
 // const collectionName = "Doodles"
-
-
-
-const contractAddress = "0x099689220846644F87D1137665CDED7BF3422747"
-const collectionName = "Robotos"
-// const contractAddress = "0xeC9C519D49856Fd2f8133A0741B4dbE002cE211b"
-// const collectionName = "BonsaiByZENFT"
+// const contractAddress = "0x099689220846644F87D1137665CDED7BF3422747"
+// const collectionName = "Robotos"
 // const contractAddress = "0xba30E5F9Bb24caa003E9f2f0497Ad287FDF95623"
 // const collectionName = "BoredApeKennelClub"
+// const contractAddress = "0x3Acce66cD37518A6d77d9ea3039E00B3A2955460";
+// const collectionName = "WonderPals"
+// const contractAddress = "0xa5C0Bd78D1667c13BFB403E2a3336871396713c5";
+// const collectionName = "CoolmansUniverse";
+// const contractAddress = "0x22d4c35A4f2B229A928b1b569b2f60225976426A";
+// const collectionName = "FroyoKittens";
+// const contractAddress = "0x23581767a106ae21c074b2276D25e5C3e136a68b";
+// const collectionName = "MoonBirds";
 // const contractAddress = "0x06aF447c72E18891FB65450f41134C00Cf7Ac28c";
-// const collectionName = "test";
+// const collectionName = "SushiVerse";
+// const contractAddress = "0x0D1fE1EbaB085bd039B4D1FBF96dBe8decF769a1";
+// const collectionName = "Zukibirds";
+const contractAddress = "0x3bf2922f4520a8BA0c2eFC3D2a1539678DaD5e9D";
+const collectionName = "ONIForce";
+
+
 // const contractAddress = "0x3a5051566b2241285BE871f650C445A88A970edd";
 // const collectionName = "TheHumanoids";
 // const contractAddress = "0x79FCDEF22feeD20eDDacbB2587640e45491b757f";
@@ -37,17 +46,17 @@ const collectionName = "Robotos"
 // const collectionName = "THEPOPULARS";
 
 // function used to change the image link to gateway.ipfs
-// const modifyImgLink = (url) => {
-//   if (!url || !url.includes("ipfs://")) return url;
-//   return url.replace("ipfs://", "https://gateway.ipfs.io/ipfs/");
-// };
+const modifyImgLink = (url) => {
+  if (!url || !url.includes("ipfs://")) return url;
+  return url.replace("ipfs://", "https://gateway.ipfs.io/ipfs/");
+};
 
 // turn "https://gateway.pinata.cloud/ipfs/Qmen2mzFwV63VEpPD9jvgmqFio7q4wpqqeP2qhR61LCgRr"
 // into "https://robotos.mypinata.cloud/ipfs/Qmen2mzFwV63VEpPD9jvgmqFio7q4wpqqeP2qhR61LCgRr"
-const modifyImgLink = (url) => {
-  if (!url) return url;
-  return url.replace("gateway.pinata", "robotos.mypinata");
-};
+// const modifyImgLink = (url) => {
+//   if (!url) return url;
+//   return url.replace("gateway.pinata", "robotos.mypinata");
+// };
 
 async function generateRarity() {
   // returns an object with keys: total, page, page_size, cursor, result; the NFTs are stored in the "result"
