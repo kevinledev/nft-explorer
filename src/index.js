@@ -9,26 +9,30 @@ function startServer() {
 }
 
 async function getCollectionData(collection, sortedBy, currentAmtCards) {
+  // console.log(collection)
   const query = new Moralis.Query(collection);
   query.ascending(sortedBy);
   const topNFTs = query.skip(currentAmtCards).limit(25);
   const results = await topNFTs.find();
-  console.log(results);
+  // console.log(results);
 
   let collectionData = [];
   for (let i = 0; i < Object.keys(results).length; i++) {
     let key = Object.keys(results)[i];
     collectionData.push(results[key]);
   }
-  console.log(collectionData);
-  console.log("getCollection() complete");
+  // console.log(collectionData);
+  // console.log("getCollection() complete");
   return collectionData;
 }
 
 async function fetchAndRenderCollection(collection, sortedBy, currentAmtCards) {
+  document.getElementById("gallery").className = collection;
+    let titleText = document.querySelector("#collection-name");
+    titleText.innerText = insertSpacesAndCapitalize(collection);
   let data = await getCollectionData(collection, sortedBy, currentAmtCards);
-
   for (let i = 0; i < data.length; i++) {
+
     let card = document.createElement("div");
     let cardCover = document.createElement("div");
     let imageWrapper = document.createElement("div");
@@ -46,7 +50,7 @@ async function fetchAndRenderCollection(collection, sortedBy, currentAmtCards) {
     cardBodyDetail.id = data[i].attributes.tokenId;
     imageWrapper.classList.add("image-wrapper");
 
-    document.getElementById("gallery").className = collection;
+    
     document.getElementById("gallery").appendChild(card);
     card.appendChild(cardCover);
     cardCover.appendChild(imageWrapper);
@@ -63,8 +67,7 @@ async function fetchAndRenderCollection(collection, sortedBy, currentAmtCards) {
       fetchAndRenderTokenDetails(collection, cardBodyDetail.id);
     });
   }
-  let titleText = document.querySelector("#collection-name");
-  titleText.innerText = insertSpacesAndCapitalize(collection);
+
 }
 
 // displays as modal
@@ -72,7 +75,7 @@ async function fetchAndRenderTokenDetails(collection, selectedTokenId) {
   const query = new Moralis.Query(collection);
   query.equalTo("tokenId", selectedTokenId);
   let selectedToken = await query.first();
-  console.log(selectedToken);
+  // console.log(selectedToken);
 
   let modal = document.querySelector(".modal");
   modal.style.display = "flex";
@@ -132,7 +135,7 @@ async function fetchAndRenderTokenDetails(collection, selectedTokenId) {
       currentTrait.trait_type[0].toUpperCase() +
       currentTrait.trait_type.slice(1);
 
-    console.log(currentTrait);
+    // console.log(currentTrait);
     let traitScore = document.createElement("div");
     traitScore.classList.add("trait-score");
     traitAndScore.appendChild(traitScore);
@@ -163,7 +166,7 @@ async function skipAndRenderTokens(collection, tokenId) {
   query.lessThan("tokenIdInt", tokenId);
   const count = await query.count();
   let countInt = parseInt(count);
-  console.log(`${count} amount of tokens before ${tokenId}`);
+  // console.log(`${count} amount of tokens before ${tokenId}`);
   fetchAndRenderCollection(collection, "tokenIdInt", countInt);
 }
 
@@ -171,17 +174,44 @@ function loadMore() {
   let collection = document.getElementById("gallery").className;
   let amountCardsLoaded = document.querySelectorAll(".card").length;
   let sortOrder = document.getElementById("sort-by").value;
-  console.log(amountCardsLoaded + "cards loaded. Now loading more");
+  // console.log(amountCardsLoaded + "cards loaded. Now loading more");
   fetchAndRenderCollection(collection, sortOrder, amountCardsLoaded);
 }
 
 function changeCollection(collection) {
+  window.scrollTo(0,0);
+  const gallery = document.getElementById("gallery");
+  gallery.innerHTML = "";
   fetchAndRenderCollection(collection, "rank", 0);
+}
+
+function showInstructions(target) {
+  let othermodal = document.querySelector(".modal");
+  othermodal.style.display="none";
+  document.querySelector(".modal-body").innerHTML = "";
+
+  let modal = document.querySelector(".instructions-modal");
+  modal.style.display = "flex";
+
+
+  let ibutton = document.getElementById("info-button");
+  ibutton.addEventListener("click", function (event) {
+    if (event.target === this) {
+      modal.style.display = "none";
+      ibutton.addEventListener("click", ()=> showInstructions())
+    }
+  });
+
+  modal.addEventListener("click", function (event) {
+    if (event.target === this) {
+      this.style.display = "none";
+    }
+  });
 }
 
 let currentAmtCards = 0;
 document.addEventListener("DOMContentLoaded", (event) => {
-  console.log("DOM fully loaded");
+  // console.log("DOM fully loaded");
 
   startServer();
   let currentAmtCards = 0;
@@ -189,9 +219,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   fetchAndRenderCollection("CoolCats", "rank", 0);
 
   document.getElementById("dropdown").addEventListener("change", function () {
-    document.querySelectorAll(".card").forEach((e) => e.remove());
     changeCollection(this.value);
-    console.log(this.value);
   });
 
   document.getElementById("jump-button").addEventListener("click", function () {
@@ -200,8 +228,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
     let currentCollection = document.getElementById("gallery").className;
 
     let currentSortBy = document.getElementById("sort-by").value;
-    console.log(currentSortBy);
-    console.log(num);
+    // console.log(currentSortBy);
+    // console.log(num);
     document.querySelectorAll(".card").forEach((e) => e.remove());
     if (currentSortBy === "tokenIdInt") {
       skipAndRenderTokens(currentCollection, num);
@@ -223,6 +251,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
     fetchAndRenderCollection(currentCollection, this.value, 0);
   });
 
+  document
+    .getElementById("info-button")
+    .addEventListener("click", () => showInstructions());
+
   let modal = document.querySelector(".modal");
   modal.addEventListener("click", function (event) {
     if (event.target === this) {
@@ -237,7 +269,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
       let documentHeight = document.body.scrollHeight;
       let currentScroll = window.scrollY + window.innerHeight;
       // When the user is [modifier]px from the bottom, fire the event.
-      let modifier = documentHeight * 0.8;
+      let modifier = documentHeight * 0.5;
       if (currentScroll + modifier > documentHeight) loadMore();
     }, 1000)
   );
