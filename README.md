@@ -98,5 +98,3 @@ Note to self: complete by end of day
   <li>Due Date: Finalize and flesh out the front end aesthetics. If there is a back-end, I will figure out how to host my project.</l1>
 </ul>
 
-
-# nft-explorer
