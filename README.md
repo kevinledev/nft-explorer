@@ -1,8 +1,16 @@
 <h1 align="center">NFT Explorer</h1>
 
-<img width="1203" alt="screenshot_nft1" src="https://user-images.githubusercontent.com/96442866/166308432-43ab3550-233e-4c1e-8e55-c0ca148c81bd.png">
+<img width="1203" alt="screenshot_nft1" src="https://user-images.githubusercontent.com/96442866/166308673-ffc5a9a1-6961-45cc-9cbf-8cc9f222c600.png">
 
-[Live Site](https://kevinledev.github.io/nft-explorer/)
+![Screen Shot 2022-05-02 at 12 02 32 PM](https://user-images.githubusercontent.com/96442866/166308868-fbc382c5-a827-43fa-9081-b1d15edc9051.png)
+
+
+<div align=center>
+    <h1>
+          <a href="https://kevinledev.github.io/nft-explorer/">View Live</a>
+    </h1>
+</div>
+
 
 NFT Explorer is an app that collects data for certain NFT projects, and ranks the NFTs by their rarity. This app helps provide an easy to understand ranking of the rarity of the NFTs, which users can quickly tell if an NFT is rare or not. Therefore, NFT collectors can easily compare the value of NFTs with each other to make quicker and faster decisions.
 
