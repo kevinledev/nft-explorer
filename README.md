@@ -1,7 +1,9 @@
 <h1 align="center">NFT Explorer</h1>
 
 <img width="1203" alt="screenshot_nft1" src="https://user-images.githubusercontent.com/96442866/166308673-ffc5a9a1-6961-45cc-9cbf-8cc9f222c600.png">
+
 <br>
+
 ![Screen Shot 2022-05-02 at 12 02 32 PM](https://user-images.githubusercontent.com/96442866/166308868-fbc382c5-a827-43fa-9081-b1d15edc9051.png)
 
 
