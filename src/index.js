@@ -1,4 +1,4 @@
-// const Moralis = require("moralis");
+const Moralis = require("moralis");
 import insertSpacesAndCapitalize from "./helper/insert-spaces.js";
 import throttleFunction from "./helper/throttle.js";
 
