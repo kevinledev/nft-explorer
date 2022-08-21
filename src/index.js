@@ -5,7 +5,8 @@ import throttleFunction from "./helper/throttle.js";
 function startServer() {
   const serverUrl = "https://zp5obq00poae.usemoralis.com:2053/server";
   const appId = "Vsfufr7b58Pbk14V5ZdAe412PCZp30ZktiHlPQdI";
-  Moralis.start({ serverUrl, appId });
+  const mSec = "QO7bYeWwaz1Mw3qlQssvRrKVyX0L9Ihns7jakzHN";
+  Moralis.start({ serverUrl, appId, mSec });
 }
 
 async function getCollectionData(collection, sortedBy, currentAmtCards) {
