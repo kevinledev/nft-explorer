@@ -2,7 +2,7 @@ const express = require("express"); // web framework
 const fetch = require("node-fetch"); // for making AJAX requests
 const path = require("path");
 const Moralis = require("moralis");
-// put environmental variables defined in .env file on process.env
+// put environmental variables defined in .env file on process.env here
 require("dotenv").config();
 
 // const serverUrl = process.env.SERVER_URL;
