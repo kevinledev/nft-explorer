@@ -39,6 +39,7 @@ app.use(express.static("dist"));
 
 // in response to `GET /` requests, send the file `dist/index.html`
 app.get("/", (request, response) => {
+  // response.sendFile(`${__dirname}/dist/index.html`);
   response.sendFile(`${__dirname}/dist/index.html`);
 });
 
